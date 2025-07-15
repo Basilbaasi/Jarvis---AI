@@ -11,7 +11,26 @@ from AppOpener import open as open_app, close as close_app
 # ─────────────────────────────────────────────
 #  AI AND WIKIPEDIA
 # ─────────────────────────────────────────────
+def model(question):
+    completion = client.chat.completions.create(
+            model="deepseek-ai/deepseek-r1-0528",
+            messages=[{"role": "user", "content": question}],
+            temperature=0.6,
+            top_p=0.7,
+            max_tokens=4096,
+            stream=True
+    )
 
+    response_text = ""
+
+        # Stream and accumulate each chunk of the response
+    for chunk in completion:
+        delta = chunk.choices[0].delta
+        if isinstance(delta.content, str):
+            response_text += delta.content
+
+    return response_text.replace("*", " ")
+    
 def search_wikipedia(query: str):
     query = query.replace("wikipedia", "").strip()
     speak("Searching Wikipedia...")
@@ -27,20 +46,8 @@ def search_wikipedia(query: str):
 def answer_question_short(question: str):
     question = question.replace("jarvis", "").strip()
     try:
-        completion = client.chat.completions.create(
-            model="nvidia/nemotron-4-340b-instruct",
-            messages=[{"role": "user", "content": question}],
-            temperature=0.2,
-            top_p=0.7,
-            max_tokens=350,
-            stream=True
-        )
-        response_text = ""
-        for chunk in completion:
-            content = chunk.choices[0].delta.content
-            if isinstance(content, str):
-                response_text += content
-        response_text = response_text.replace("*", " ")
+        response_text = model(question)
+
         print(response_text[:350])
         speak(response_text[:350])
     except Exception as e:
@@ -50,20 +57,7 @@ def chat():
     while True:
         question = input("enter for ai help :  ")
         try:
-            completion = client.chat.completions.create(
-                model="nvidia/llama-3.1-nemotron-70b-instruct",
-                messages=[{"role": "user", "content": question}],
-                temperature=0.5,
-                top_p=1,
-                max_tokens=1024,
-                stream=True
-            )
-            response_text = ""
-            for chunk in completion:
-                content = chunk.choices[0].delta.content
-                if isinstance(content, str):
-                    response_text += content
-            response_text = response_text.replace("*", " ").replace("###", " ")
+            response_text = model(question)
             print("result:\n\n\n", response_text)
             speak("answer")
             p = input("\n\n\nREAD Y/N : ")
@@ -78,20 +72,7 @@ def chat():
 def answer_question_full(question: str):
     question = question.replace("jarvis", "").strip()
     try:
-        completion = client.chat.completions.create(
-            model="nvidia/nemotron-4-340b-instruct",
-            messages=[{"role": "user", "content": question}],
-            temperature=0.2,
-            top_p=0.7,
-            max_tokens=1024,
-            stream=True
-        )
-        response_text = ""
-        for chunk in completion:
-            content = chunk.choices[0].delta.content
-            if isinstance(content, str):
-                response_text += content
-        response_text = response_text.replace("*", " ").replace("###", " ")
+        response_text = model(question)
         print("result:\n\n\n", response_text)
         speak(response_text)
     except Exception as e:
