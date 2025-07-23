@@ -22,6 +22,9 @@ if __name__ == "__main__":
 
         if 'wikipedia' in query:
             search_wikipedia(query)
+            
+        elif 'on web' in query or 'in web' in query:
+            open_website(query)
 
         elif 'jarvis' in query:
             if 'full' in query:
@@ -40,8 +43,6 @@ if __name__ == "__main__":
         elif any(k in query for k in ['open', 'close']):
             control_apps(query)
 
-        elif 'on web' in query or 'in web' in query:
-            open_website(query)
 
         elif 'open yt' in query or 'open movies' in query or 'open edge' in query:
             open_path(query)

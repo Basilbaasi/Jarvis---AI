@@ -17,7 +17,7 @@ def listen() -> str:
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         print("🎤 Listening...")
-        recognizer.pause_threshold = 1  # Wait 1 second for pauses
+        recognizer.pause_threshold = 2  # Wait 2 second for pauses
         audio = recognizer.listen(source)
 
     try:
