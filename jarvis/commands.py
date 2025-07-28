@@ -54,6 +54,7 @@ def model(question):
     return response_text.replace("*", " ")
 
 def search_wikipedia(query: str):
+    query=query.lower()
     query = query.replace("wikipedia", "").strip()
     speak("Searching Wikipedia...")
     try:
@@ -84,6 +85,8 @@ def chat():
             p = input("\n\n\nREAD Y/N : ")
             if p.lower() == "y":
                 speak(response_text)
+            else:
+                print(response_text)
         except Exception as e:
             print("An error occurred:", e)
             speak("I'm sorry, I couldn't find an answer.")
