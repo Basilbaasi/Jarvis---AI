@@ -1,46 +1,43 @@
 # 🤖 Jarvis AI Assistant
 
-**Jarvis** is a modular voice-controlled Python AI assistant powered by NVIDIA's **Google Gemma 3n-e4b-it** LLM. It supports speech recognition, app automation, Wikipedia search, web browsing, and real-time conversation.
+**Jarvis** is a modular **voice-controlled Python AI assistant** powered by **Google Gemma 3n-e4b-it** via NVIDIA’s developer API.  
+It supports **speech recognition, app automation, Wikipedia search, web browsing, media playback, and real-time AI conversations.**
 
 ---
 
 ## 🧠 Features
-
-- 🎙️ Voice control using microphone input  
-- 🧾 Wikipedia summary lookup  
-- 🧠 Real-time LLM responses via NVIDIA API (Gemma)  
-- 🗂️ Open/close installed apps by voice  
-- 🌐 Web search via Bing  
-- 🎧 Media playback & file explorer automation  
-- 🗨️ Chat mode using NVIDIA-hosted LLM  
+- 🎙️ **Voice control** using microphone input  
+- 🧾 **Wikipedia lookup** for quick summaries  
+- 🧠 **Real-time LLM responses** via NVIDIA Gemma API  
+- 🗂️ **App automation** (open/close installed apps)  
+- 🌐 **Web search** via Bing  
+- 🎧 **Media playback & file explorer automation**  
+- 🗨️ **Conversational chat mode** with LLM  
 
 ---
 
 ## ⚙️ Tech Stack
-
 | Component         | Description                                      |
-|------------------|--------------------------------------------------|
-| Python            | Core logic                                       |
-| SpeechRecognition | Voice input                                      |
-| pyttsx3           | Text-to-speech (offline)                         |
-| AppOpener         | App automation on Windows                        |
-| wikipedia         | Query Wikipedia summaries                        |
-| requests          | HTTP client to call NVIDIA’s hosted LLMs        |
-| python-dotenv     | Secure environment variable loading              |
+|-------------------|--------------------------------------------------|
+| **Python**        | Core logic                                       |
+| **SpeechRecognition** | Microphone voice input                        |
+| **pyttsx3**       | Offline text-to-speech synthesis                 |
+| **AppOpener**     | App automation on Windows                        |
+| **wikipedia**     | Wikipedia summary queries                        |
+| **requests**      | HTTP client for NVIDIA LLM API calls             |
+| **python-dotenv** | Secure environment variable loading              |
 
 ---
 
 ## 🔐 API Integration
+This assistant uses the **Google Gemma 3n-e4b-it** model via **NVIDIA’s Build Platform**.
 
-This assistant uses the **Google Gemma 3n-e4b-it** model via NVIDIA's developer API.
+🔗 [View Model on NVIDIA Build Platform](https://build.nvidia.com/google/gemma-3n-e4b-it)
 
-> 🔗 [View Model on NVIDIA Build Platform](https://build.nvidia.com/google/gemma-3n-e4b-it)
-
-To use it:
-
-1. Sign up at [https://build.nvidia.com](https://build.nvidia.com)
-2. Get your API key
-3. Create a `.env` file in your root directory:
+**Setup your API Key:**
+1. Sign up at [https://build.nvidia.com](https://build.nvidia.com)  
+2. Get your NVIDIA API key  
+3. Create a `.env` file in your root directory:  
 
 ```env
 NVIDIA_API_KEY=your_nvidia_api_key_here
@@ -57,7 +54,7 @@ bash
 Copy
 Edit
 python main.py
-Say commands like:
+Example commands:
 
 “Jarvis open YouTube”
 
@@ -67,9 +64,22 @@ Say commands like:
 
 “Jarvis search pandas in web”
 
+🖼️ Screenshots
+
+### Opening Instagram
+![Jarvis Opening Instagram](screenshots/jarvis_instagram.png)
+
+### Searching Anna University
+![Jarvis Searching University result on web](screenshots/jarvis_university.png)
+
+
+🎥 Demo Video
+
+https://www.linkedin.com/posts/basilck_python-ai-voiceassistant-activity-7354211469388849153-FYhw?utm_source=share&utm_medium=member_desktop&rcm=ACoAAELiM9UBv8pB4-nII9XJ7sJU14Ar1BFMw5w
+
 📄 License
-MIT License
+This project is licensed under the MIT License.
 
 ✨ Credits
-Built with 💻 by Basil
-Powered by Google Gemma LLM via NVIDIA's Developer Platform
+Built with 💻 by Basil C K
+Powered by Google Gemma LLM via NVIDIA Build Platform
